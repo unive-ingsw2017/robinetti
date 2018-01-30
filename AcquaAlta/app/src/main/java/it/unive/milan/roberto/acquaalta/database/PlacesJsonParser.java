@@ -1,7 +1,5 @@
 package it.unive.milan.roberto.acquaalta.database;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,12 +15,12 @@ public final class PlacesJsonParser {
 
     public PlacesJsonParser(){}
 
-    public static List parseOpenData(String data) throws JSONException {
+    public static List<Place> parseOpenData(String data) throws JSONException {
 
         List<Place> places = new ArrayList<>();
         JSONArray jArray = new JSONArray(data);
 
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:m:ss");
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         for (int i=0; i < jArray.length(); i++) {
             Place p = new Place();
@@ -51,7 +49,7 @@ public final class PlacesJsonParser {
                 p.setValore(null);
             }
             else {
-                Double level = new Double(a.replace(" m", ""));
+                Double level = Double.valueOf(a.replace(" m", ""));
                 p.setValore(level);
             }
 

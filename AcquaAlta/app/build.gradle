@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "it.unive.milan.roberto.provatab"
+        applicationId "it.unive.milan.roberto.acquaalta"
         minSdkVersion 22
         targetSdkVersion 26
         versionCode 1

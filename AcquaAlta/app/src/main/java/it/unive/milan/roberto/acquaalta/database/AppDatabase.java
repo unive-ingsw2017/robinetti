@@ -7,7 +7,6 @@ import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -52,7 +51,6 @@ public abstract class AppDatabase extends RoomDatabase {
                     // Create database here
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             AppDatabase.class, "app_database")
-                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }
@@ -110,8 +108,6 @@ public abstract class AppDatabase extends RoomDatabase {
                 iter.remove();
         }
 
-        Log.d("INTERVALLO", "findForecasts: da " + date + " a " + maxDate);
-        Log.d("FORECASTS", "findForecasts: " + forecasts);
         return forecasts;
     }
 
@@ -138,7 +134,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 placesError = true;
             }
 
-            if (!placesError && !response.isEmpty()) {
+            if (!placesError && response!=null && !response.isEmpty()) {
                 try {
                     List<Place> parsedPlaces = PlacesJsonParser.parseOpenData(response);
                     Place[] arrayPlaces = parsedPlaces.toArray(new Place[parsedPlaces.size()]);
@@ -146,7 +142,12 @@ public abstract class AppDatabase extends RoomDatabase {
                     AppDatabase db = AppDatabase.getDatabase(context);
 
                     for (Place place : arrayPlaces) {
-                        place.setScelto(db.placeDao().getPlace(place.getStazione()).isScelto());
+                        if(db.placeDao().getPlace(place.getStazione())!=null) {
+                            place.setScelto(db.placeDao().getPlace(place.getStazione()).isScelto());
+                        }
+                        else {
+                            place.setScelto(false);
+                        }
                     }
 
                     db.placeDao().deleteAll();
@@ -172,7 +173,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 forecastsError = true;
             }
 
-            if (!forecastsError && !response.isEmpty()) {
+            if (!forecastsError && response!=null && !response.isEmpty()) {
                 try {
                     List<Forecast> parsedForecasts = ForecastsJsonParser.parseOpenData(response);
                     Forecast[] arrayForecasts = parsedForecasts.toArray(new Forecast[parsedForecasts.size()]);
@@ -194,7 +195,6 @@ public abstract class AppDatabase extends RoomDatabase {
             if(!aBoolean){
                 Toast.makeText(context, "Errore di rete, riprova", Toast.LENGTH_SHORT).show();
             }
-            super.onPostExecute(aBoolean);
         }
     }
 }

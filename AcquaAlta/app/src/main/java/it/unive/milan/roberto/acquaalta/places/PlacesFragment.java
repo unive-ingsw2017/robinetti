@@ -145,7 +145,12 @@ public class PlacesFragment extends Fragment {
         protected Void doInBackground(Void... voids) {
             AppDatabase.getDatabase(getContext()).updateFromInternet();
             places.clear();
-            places.addAll(AppDatabase.getDatabase(getContext()).placeDao().getChosenPlaces());
+            if(AppDatabase.getDatabase(getContext()) == null){
+                return null;
+            }
+            if(AppDatabase.getDatabase(getContext()).placeDao().getChosenPlaces() != null) {
+                places.addAll(AppDatabase.getDatabase(getContext()).placeDao().getChosenPlaces());
+            }
             return null;
         }
 

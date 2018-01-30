@@ -11,18 +11,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import it.unive.milan.roberto.acquaalta.database.Forecast;
-
 public final class ForecastsJsonParser {
 
     public ForecastsJsonParser(){}
 
-    public static List parseOpenData(String data) throws JSONException {
+    public static List<Forecast> parseOpenData(String data) throws JSONException {
 
         List<Forecast> forecasts = new ArrayList<>();
         JSONArray jArray = new JSONArray(data);
 
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:m:ss");
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         for (int i=0; i < jArray.length(); i++) {
             Forecast f = new Forecast();
