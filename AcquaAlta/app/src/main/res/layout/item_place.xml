@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/crd_place"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="2dp"
+        app:cardUseCompatPadding="true">
+
+        <TextView
+            android:id="@+id/tv_place_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="20sp"
+            android:textSize="20sp"
+            android:text="Nome luogo"/>
+
+        <TextView
+            android:id="@+id/tv_place_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|left"
+            android:paddingLeft="10sp"
+            android:paddingBottom="20sp"
+            android:text="Orario...."/>
+
+        <TextView
+            android:id="@+id/tv_place_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:paddingRight="10sp"
+            android:paddingBottom="20sp"
+            android:text="Livello"/>
+
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>

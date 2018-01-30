@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AcquaAlta</string>
+    <string name="tab_text_1">Luoghi</string>
+    <string name="tab_text_2">Previsioni</string>
+    <string name="title_activity_map_places">Map</string>
+    <string name="info_text">Acqua Alta 0.0.1\nDeveloped by Robinetti\n\nDati e previsioni forniti da \"Istituzione Centro Previsioni e Segnalazioni Maree\" di Venezia e distribuiti da dati.venezia.it </string>
+</resources>
