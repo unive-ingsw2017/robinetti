@@ -1,8 +1,6 @@
 package it.unive.milan.roberto.acquaalta.places;
 
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,7 +20,6 @@ import java.util.List;
 import it.unive.milan.roberto.acquaalta.R;
 import it.unive.milan.roberto.acquaalta.database.AppDatabase;
 import it.unive.milan.roberto.acquaalta.database.Place;
-import it.unive.milan.roberto.acquaalta.places.add.PlaceAddActivity;
 import it.unive.milan.roberto.acquaalta.utilities.ItemClickSupport;
 
 public class PlacesFragment extends Fragment {
@@ -59,28 +56,6 @@ public class PlacesFragment extends Fragment {
 
         mAdapter = new PlacesAdapter(places);
         mRecyclerView.setAdapter(mAdapter);
-
-        ItemClickSupport.addTo(mRecyclerView).setOnItemClickListener(
-            new ItemClickSupport.OnItemClickListener() {
-                @Override
-                public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                    PlacesAdapter.PlaceViewHolder vh = (PlacesAdapter.PlaceViewHolder) recyclerView.getChildViewHolder(v);
-                    Intent intent;
-                    if(position == recyclerView.getAdapter().getItemCount()-1){
-                        intent = new Intent(getContext(), PlaceAddActivity.class);
-                    }
-                    else {
-                        Double lat = vh.getPlace().getLatDDN();
-                        Double lon = vh.getPlace().getLonDDE();
-                        String place = vh.getPlace().getStazione();
-                        Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + Uri.encode(lat.toString() + "," + lon.toString() + "(" + place + ")"));
-                        intent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                        intent.setPackage("com.google.android.apps.maps");
-                    }
-                    startActivity(intent);
-                }
-            }
-        );
 
         ItemClickSupport.addTo(mRecyclerView).setOnItemLongClickListener(
                 new ItemClickSupport.OnItemLongClickListener() {
