@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -29,6 +30,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlaceViewH
         private final TextView tvTime;
         private final TextView tvLevel;
         private final CardView crdCard;
+        private final Button tvAdd;
 
         // ViewHolder mantiene anche l'informazione all'intero oggetto Place
         private Place place = new Place();
@@ -49,6 +51,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlaceViewH
             this.tvTime = (TextView) v.findViewById(R.id.tv_place_time);
             this.tvLevel = (TextView) v.findViewById(R.id.tv_place_level);
             this.crdCard = (CardView) v.findViewById(R.id.crd_place);
+            this.tvAdd = (Button) v.findViewById(R.id.tv_add_place);
         }
 
 
@@ -69,6 +72,10 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlaceViewH
             return crdCard;
         }
 
+        public Button getBtnAdd() {
+            return tvAdd;
+        }
+
         public Place getPlace() {
             return place;
         }
@@ -81,6 +88,10 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlaceViewH
     public PlaceViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         int viewToInflate = R.layout.item_place;
 
+        if (viewType == R.layout.item_button_add_place){
+            viewToInflate = R.layout.item_button_add_place;
+        }
+
         // Istanzia una nuova view per il singolo item
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(viewToInflate, viewGroup, false);
@@ -91,27 +102,38 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlaceViewH
 
     @Override
     public void onBindViewHolder(PlaceViewHolder viewHolder, final int position) {
-        // recupera info per l'elemento dall'array
-        Place place = mPlaces.get(position);
-        int bg;
+        if (position != mPlaces.size()){
+            // recupera info per l'elemento dall'array
+            Place place = mPlaces.get(position);
+            int bg;
 
-        // imposta la variabile e i campi del viewholder
-        viewHolder.setPlace(place);
-        viewHolder.getTvName().setText(place.getStazione());
-        viewHolder.getTvTime().setText(new SimpleDateFormat("dd/MM/yyyy HH:mm").format(place.getData()));
+            // imposta la variabile e i campi del viewholder
+            viewHolder.setPlace(place);
+            viewHolder.getTvName().setText(place.getStazione());
+            viewHolder.getTvTime().setText(new SimpleDateFormat("dd/MM/yyyy HH:mm").format(place.getData()));
 
-        String valore;
-        if (place.getValore() == null) {
-            valore = "-";
-        } else {
-            valore = String.format("%.2f", place.getValore());
+            String valore;
+            if (place.getValore() == null) {
+                valore = "-";
+            } else {
+                valore = String.format("%.2f", place.getValore());
+            }
+            viewHolder.getTvLevel().setText(valore);
         }
-        viewHolder.getTvLevel().setText(valore);
     }
 
     @Override
     public int getItemCount() {
-        return mPlaces.size();
+        return mPlaces.size() + 1;
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        if(position == mPlaces.size()){
+            return R.layout.item_button_add_place;
+        }
+        else{
+            return super.getItemViewType(position);
+        }
+    }
 }
