@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.unive.milan.roberto.acquaalta.forecasts.ForecastsFragment;
-import it.unive.milan.roberto.acquaalta.places.MapPlacesActivity;
 import it.unive.milan.roberto.acquaalta.places.PlacesFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -59,11 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.action_info) {
             Intent intent = new Intent(this, InfoActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        else if (id == R.id.action_map){
-            Intent intent = new Intent(this, MapPlacesActivity.class);
             startActivity(intent);
             return true;
         }
