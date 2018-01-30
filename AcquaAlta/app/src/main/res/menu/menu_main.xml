@@ -4,12 +4,6 @@
     tools:context="it.unive.milan.roberto.acquaalta.MainActivity">
 
     <item
-        android:id="@+id/action_map"
-        android:orderInCategory="200"
-        android:title="Mappa"
-        app:showAsAction="collapseActionView"/>
-
-    <item
         android:id="@+id/action_info"
         android:orderInCategory="200"
         android:title="Informazioni"
