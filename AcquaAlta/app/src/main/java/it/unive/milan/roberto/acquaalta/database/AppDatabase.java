@@ -87,8 +87,10 @@ public abstract class AppDatabase extends RoomDatabase {
         Collections.sort(temp);
         Collections.reverse(temp);
 
+        int l = temp.size()<3 ? temp.size() : 3;
+
         // Ritorno solo le ultime tre previsioni
-        return temp.subList(0, 3);
+        return temp.subList(0, l);
     }
 
     public List<Forecast> findForecasts (Date date) {

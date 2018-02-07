@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -115,14 +116,49 @@ public class ForecastsFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            Date date1 = dates.get(0);
-            Date date2 = dates.get(1);
-            Date date3 = dates.get(2);
+            Date date;
 
-            tvDate1.setText(new SimpleDateFormat("EEEE dd/MM/yyyy").format(date1));
-            tvDate2.setText(new SimpleDateFormat("EEEE dd/MM/yyyy").format(date2));
-            tvDate3.setText(new SimpleDateFormat("EEEE dd/MM/yyyy").format(date3));
+            tvDate1.setText("Nessun dato");
+            tvDate2.setText("Nessun dato");
+            tvDate3.setText("Nessun dato");
+
+
+            if (dates.size()>0) {
+                tvDate1.setText(new SimpleDateFormat("EEEE dd/MM/yyyy").format(dates.get(0)));
+            }
+            else cw1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    nessunDato();
+                }
+            });
+
+            if (dates.size()>1) {
+                tvDate2.setText(new SimpleDateFormat("EEEE dd/MM/yyyy").format(dates.get(1)));
+            }
+            else cw2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    nessunDato();
+                }
+            });
+
+            if (dates.size()>2) {
+                tvDate1.setText(new SimpleDateFormat("EEEE dd/MM/yyyy").format(dates.get(2)));
+            }
+            else cw3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    nessunDato();
+                }
+            });
+
+
             swipeRefreshLayout.setRefreshing(false);
         }
+    }
+
+    public void nessunDato() {
+        Toast.makeText(getContext(), "Nessun dato disponibile", Toast.LENGTH_SHORT).show();
     }
 }
