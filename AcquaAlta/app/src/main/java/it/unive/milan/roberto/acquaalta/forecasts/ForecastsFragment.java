@@ -45,7 +45,7 @@ public class ForecastsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View fragment = inflater.inflate(R.layout.fragment_forecast_new, container, false);
+        View fragment = inflater.inflate(R.layout.fragment_forecasts, container, false);
 
         swipeRefreshLayout =
                 (SwipeRefreshLayout) fragment.findViewById(R.id.swipe_refresh_forecasts_new);
@@ -144,7 +144,7 @@ public class ForecastsFragment extends Fragment {
             });
 
             if (dates.size()>2) {
-                tvDate1.setText(new SimpleDateFormat("EEEE dd/MM/yyyy").format(dates.get(2)));
+                tvDate3.setText(new SimpleDateFormat("EEEE dd/MM/yyyy").format(dates.get(2)));
             }
             else cw3.setOnClickListener(new View.OnClickListener() {
                 @Override

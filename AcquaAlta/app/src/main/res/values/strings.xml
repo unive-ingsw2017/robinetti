@@ -1,7 +1,9 @@
 <resources>
-    <string name="app_name">AcquaAlta</string>
-    <string name="tab_text_1">Luoghi</string>
-    <string name="tab_text_2">Previsioni</string>
-    <string name="title_activity_map_places">Map</string>
-    <string name="info_text">Acqua Alta 0.0.1\nDeveloped by Robinetti\n\nDati e previsioni forniti da \"Istituzione Centro Previsioni e Segnalazioni Maree\" di Venezia e distribuiti da dati.venezia.it </string>
+    <string name="app_name">Acqua Alta</string>
+    <string name="tab_text_1">Places</string>
+    <string name="tab_text_2">Forecasts</string>
+    <string name="info_text">Acqua Alta 1.1\nDeveloped by Robinetti\n\nData and forecasts powered by \"Istituzione Centro Previsioni e Segnalazioni Maree\" of Venice and shared by dati.venezia.it\n\nTEAM:\n\tRoberto Milan\n\tLorenzo Pocchi\n\tRadu Novac\n\tMarco Luisotto</string>
+    <string name="aggiungi_luogo">Add place</string>
+    <string name="aggiungi_un_luogo_da_monitorare">Add a place to monitor</string>
+    <string name="informazioni">More info</string>
 </resources>
