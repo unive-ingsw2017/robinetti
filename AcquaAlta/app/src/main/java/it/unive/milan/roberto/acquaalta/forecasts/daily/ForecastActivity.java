@@ -62,7 +62,6 @@ public class ForecastActivity extends AppCompatActivity {
                 mLayoutManager.getOrientation());
         mRecyclerView.addItemDecoration(dividerItemDecoration);
 
-
 //        graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(this));
 //        graph.getGridLabelRenderer().setHumanRounding(false);
 

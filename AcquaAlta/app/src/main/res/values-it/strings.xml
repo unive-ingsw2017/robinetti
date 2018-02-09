@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Acqua Alta</string>
+    <string name="tab_text_2">Previsioni</string>
+    <string name="tab_text_1">Luoghi</string>
+    <string name="info_text">Acqua Alta 1.1\nSviluppato da Robinetti\n\nDati e previsioni forniti da \"Istituzione Centro Previsioni e Segnalazioni Maree\" di Venezia e distribuiti da dati.venezia.it\n\nTEAM:\n\tRoberto Milan\n\tLorenzo Pocchi\n\tRadu Novac\n\tMarco Luisotto</string>
+    <string name="aggiungi_luogo">Aggiungi luogo</string>
+    <string name="aggiungi_un_luogo_da_monitorare">Aggiungi un luogo da monitorare</string>
+    <string name="informazioni">Informazioni</string>
+</resources>

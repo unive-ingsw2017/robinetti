@@ -1,5 +1,6 @@
 package it.unive.milan.roberto.acquaalta.places;
 
+import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -115,8 +116,14 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlaceViewH
             String valore;
             if (place.getValore() == null) {
                 valore = "-";
+                viewHolder.getCrdCard().setCardBackgroundColor(Color.parseColor("#fffece"));
             } else {
                 valore = String.format("%.2f", place.getValore());
+                if(place.getValore()>0) {
+                    viewHolder.getCrdCard().setCardBackgroundColor(Color.parseColor("#ffcece"));
+                } else {
+                    viewHolder.getCrdCard().setCardBackgroundColor(Color.parseColor("#ebffce"));
+                }
             }
             viewHolder.getTvLevel().setText(valore);
         }

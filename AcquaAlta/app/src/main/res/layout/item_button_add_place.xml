@@ -7,7 +7,7 @@
         android:id="@+id/tv_add_place"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Aggiungi luogo"
+        android:text="@string/aggiungi_luogo"
         android:textSize="16sp"
         android:clickable="false"/>
 
